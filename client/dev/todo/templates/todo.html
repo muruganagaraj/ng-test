@@ -1,0 +1,22 @@
+<div class="todo-container">
+  <form #todoForm="ngForm" class="todo-form" (ngSubmit)="add(todoModel)">
+
+    <h1 class="todo-title">{{title}}</h1>
+    <div>
+      <input type="text" name="todoInput" [(ngModel)]="todoModel.todoInput" [class.todo-error]="!todoModel.todoInput.length" placeholder="What do you have todo?"
+        autofocus required pattern="[\d]*" />
+    </div>
+    <div>
+      <select name="todoSelect" [(ngModel)]="todoModel.todoSelect" required>
+             <option value=""> select an option</option>
+             <option *ngFor="let type of types" [value]="type.value">{{type.value}}</option>
+           </select>
+    </div>
+    <div>
+      <label> <input name="option1" type="radio" value="1" [(ngModel)]="todoModel.todoRadio"> Option 1</label>
+      <label> <input name="option2" type="radio" value="2" [(ngModel)]="todoModel.todoRadio"> Option 2</label>
+    </div>
+    <button type="submit" [disabled]="!todoForm.form.valid">Submit</button>
+  </form>
+
+</div>
